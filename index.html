@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horror House</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .scene {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: #333;
+            border-radius: 0 0 30px 30px;
+            overflow: hidden;
+        }
+
+        .roof {
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 150px;
+            background-color: #111;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .door {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 150px;
+            background-color: #222;
+            border-radius: 10px;
+        }
+
+        .windows {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 250px;
+        }
+
+        .window {
+            width: 50px;
+            height: 80px;
+            background-color: #444;
+            border: 5px solid #222;
+            border-radius: 5px;
+        }
+
+        .moon {
+            position: absolute;
+            top: 20px;
+            left: 300px;
+            width: 80px;
+            height: 80px;
+            background-color: #ddd;
+            border-radius: 50%;
+            box-shadow: 0 0 20px 5px #ddd;
+            animation: move-moon 10s infinite;
+        }
+
+        @keyframes move-moon {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(-200px) translateY(50px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .bats {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+        }
+
+        .bat {
+            position: absolute;
+            top: 50px;
+            width: 40px;
+            height: 20px;
+            background-color: #111;
+            border-radius: 20px 20px 0 0;
+            animation: fly-bat 5s infinite linear;
+        }
+
+        .bat::before,
+        .bat::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            width: 20px;
+            height: 20px;
+            background-color: #111;
+            border-radius: 50%;
+        }
+
+        .bat::before {
+            left: -20px;
+            transform: rotate(-45deg);
+        }
+
+        .bat::after {
+            right: -20px;
+            transform: rotate(45deg);
+        }
+
+        @keyframes fly-bat {
+            0% {
+                transform: translateX(0) translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateX(100px) translateY(-50px) rotate(15deg);
+            }
+            100% {
+                transform: translateX(200px) translateY(0) rotate(0deg);
+            }
+        }
+
+        .bat:nth-child(2) {
+            top: 150px;
+            left: 80px;
+            animation-delay: 2s;
+        }
+
+        .bat:nth-child(3) {
+            top: 200px;
+            left: 300px;
+            animation-delay: 3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="roof"></div>
+        <div class="windows">
+            <div class="window"></div>
+            <div class="window"></div>
+        </div>
+        <div class="door"></div>
+        <div class="moon"></div>
+        <div class="bats">
+            <div class="bat"></div>
+            <div class="bat"></div>
+            <div class="bat"></div>
+        </div>
+    </div>
+</body>
+</html>
